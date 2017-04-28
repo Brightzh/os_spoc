@@ -1,0 +1,46 @@
+Process1 in!
+Process2 in!
+kernel_execve: pid = 2, name = "exit".
+I am the parent. Forking the child...
+I am parent, fork a child pid 5
+I am the parent, waiting now..
+s:Process1 first!
+s:Process2 second!
+I am the child.
+waitpid 5 ok.
+exit pass.
+'''x=5, y=7, z=9.'''
+Process1 in!
+Process2 in!
+s:Process2 second!
+s:Process2 first!
+'''x=5, y=12, z=9.'''
+Process1 in!
+Process2 in!
+m:Process1 first!
+cond_signal begin: cvp c05a75cc, cvp->count 0, cvp->owner->next_count 0
+cond_signal end: cvp c05a75cc, cvp->count 0, cvp->owner->next_count 0
+cond_wait begin:  cvp c05a75b8, cvp->count 0, cvp->owner->next_count 0
+m:Process2 second!
+cond_signal begin: cvp c05a75b8, cvp->count 1, cvp->owner->next_count 0
+cond_wait end:  cvp c05a75b8, cvp->count 0, cvp->owner->next_count 1
+cond_signal end: cvp c05a75b8, cvp->count 0, cvp->owner->next_count 0
+cond_signal begin: cvp c05a75cc, cvp->count 0, cvp->owner->next_count 0
+cond_signal end: cvp c05a75cc, cvp->count 0, cvp->owner->next_count 0
+'''x=5, y=7, z=9.'''
+Process1 in!
+Process2 in!
+m:Process2 second!
+cond_signal begin: cvp c05a779c, cvp->count 0, cvp->owner->next_count 0
+cond_signal end: cvp c05a779c, cvp->count 0, cvp->owner->next_count 0
+cond_wait begin:  cvp c05a7788, cvp->count 0, cvp->owner->next_count 0
+m:Process2 first!
+cond_signal begin: cvp c05a7788, cvp->count 1, cvp->owner->next_count 0
+cond_wait end:  cvp c05a7788, cvp->count 0, cvp->owner->next_count 1
+cond_signal end: cvp c05a7788, cvp->count 0, cvp->owner->next_count 0
+cond_wait begin:  cvp c05a7788, cvp->count 0, cvp->owner->next_count 0
+cond_signal begin: cvp c05a7788, cvp->count 1, cvp->owner->next_count 0
+cond_wait end:  cvp c05a7788, cvp->count 0, cvp->owner->next_count 1
+cond_signal end: cvp c05a7788, cvp->count 0, cvp->owner->next_count 0
+'''x=5, y=12, z=9.'''
+all user-mode processes have quit.
